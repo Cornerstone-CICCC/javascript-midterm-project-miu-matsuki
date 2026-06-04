@@ -9,7 +9,16 @@
 const _ = require('lodash');
 const countries = require('../data/countries.json');
 
-const lodashSolution = null;
+// const lodashSolution = _.chain(countries).filter((el)=> el.region === "Africa").value(); //Africa
+const lodashSolution = _.chain(countries)
+.filter((el)=> el.region === "Africa")
+.orderBy("desc")
+.take(5)
+.map(el=>({
+  name: el.name,
+  population: el.population,
+  subregion: el.subregion}))
+.value();
 
 console.log(lodashSolution);
 
