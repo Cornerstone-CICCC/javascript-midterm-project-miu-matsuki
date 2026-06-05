@@ -11,7 +11,17 @@
 const _ = require('lodash');
 const products = require('../data/products.json');
 
-const lodashSolution = null;
+const lodashSolution = _.chain(products)
+.filter((product)=>!product.discontinued)
+.map((el)=> ({
+  id: el.id, 
+  name: el.name, 
+  category: el.category, 
+  marginPercent:_.round(((el.price - el.cost) / el.price) * 100,1) 
+}))
+.orderBy("marginPercent", "desc")
+.take(8)
+.value();
 
 console.log(lodashSolution);
 
