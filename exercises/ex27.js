@@ -10,7 +10,15 @@
 const _ = require('lodash');
 const movies = require('../data/movies.json');
 
-const lodashSolution = null;
+const lodashSolution = _.chain(movies)
+.filter((num)=> num.rating >= 8)
+.orderBy("rating", "desc")
+.map((el)=>({
+  title: el.title,
+  genre: el.genre,
+  rating: el.rating
+}))
+.value();
 
 console.log(lodashSolution);
 
