@@ -10,7 +10,14 @@
 const _ = require('lodash');
 const movies = require('../data/movies.json');
 
-const lodashSolution = null;
+const lodashSolution = _.chain(movies)
+.filter((movie)=> movie.genre.toLowerCase() === "comedy")
+.map((el)=>({
+  title: el.title,
+  boxOfficeMillions: el.boxOfficeMillions
+}))
+.orderBy("boxOfficeMillions", "desc")
+.value();
 
 console.log(lodashSolution);
 
