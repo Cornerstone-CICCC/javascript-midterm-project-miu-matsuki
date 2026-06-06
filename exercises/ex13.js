@@ -11,7 +11,9 @@
 const _ = require('lodash');
 const students = require('../data/students.json');
 
-const lodashSolution = null;
+const lodashSolution = _.chain(students)
+.groupBy("")
+.valiue();
 
 console.log(lodashSolution);
 

@@ -14,7 +14,16 @@
 const _ = require('lodash');
 const students = require('../data/students.json');
 
-const lodashSolution = null;
+const lodashSolution = _.chain(students)
+
+.groupBy("cohort")
+.map((student, cohort)=>({
+  cohort: cohort,
+  studentCount: student.length,
+  activeStudentCount: _.filter(student, num=> num.status.toLowerCase() === "active").length
+}))
+.sortBy("cohort")
+.value();
 
 console.log(lodashSolution);
 
