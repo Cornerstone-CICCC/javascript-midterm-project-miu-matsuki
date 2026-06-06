@@ -13,7 +13,16 @@
 const _ = require('lodash');
 const products = require('../data/products.json');
 
-const lodashSolution = null;
+const lodashSolution = _.chain(products)
+.groupBy("category")
+.map((el)=>({
+  category: el[0].category,
+  productCount: el.length,
+  totalStock: _.sumBy( el , "stock"),
+  inventoryValue:  _.round(_.sumBy(el,(p)=> p.price * p.stock),2)  
+}))
+.orderBy("inventoryValue", "desc")
+.value();
 
 console.log(lodashSolution);
 
