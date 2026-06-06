@@ -10,7 +10,16 @@
 const _ = require('lodash');
 const students = require('../data/students.json');
 
-const lodashSolution = null;
+const lodashSolution = _.chain(students)
+.filter((num)=> num.attendance < 80 && num.status.toLowerCase() === "active")
+.map((el)=>({
+  id: el.id, 
+  name: el.name, 
+  cohort: el.cohort, 
+  attendance: el.attendance
+}))
+.orderBy("attendance", "asc")
+.value();
 
 console.log(lodashSolution);
 
