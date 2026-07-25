@@ -12,8 +12,8 @@ const _ = require('lodash');
 const students = require('../data/students.json');
 
 const lodashSolution = _.chain(students)
-.groupBy("")
-.valiue();
+.groupBy("") // Feedback: Start from active students, flatten their skills, then count by each skill name instead of grouping by an empty key.
+.valiue(); // Feedback: This is a typo; Lodash chains end with .value().
 
 console.log(lodashSolution);
 

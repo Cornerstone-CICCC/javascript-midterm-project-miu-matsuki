@@ -15,10 +15,10 @@ const lodashSolution = _.chain(countries)
 .map(el=>({
   name: el.name,
   region: el.region,
-  dencity: _.round(el.population / el.area,1)
+  dencity: _.round(el.population / el.area,1) // Feedback: The expected property is density, not dencity.
 }))
 .filter((den)=> den.dencity > 300)
-.orderBy("desc")
+.orderBy("desc") // Feedback: Sort by the density field descending, for example orderBy('density', 'desc').
 .value();
 
 console.log(lodashSolution);

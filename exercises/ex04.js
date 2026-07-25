@@ -17,7 +17,7 @@ const lodashSolution = _.chain(countries)
    language: name,
    countryCount: cnt
 }))
-.orderBy("countryCount", "desc")
+.orderBy("countryCount", "desc") // Feedback: Include language as the secondary ascending sort for ties in countryCount.
 .take(10)
 .value();
 

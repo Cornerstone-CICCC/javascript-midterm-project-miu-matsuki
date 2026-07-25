@@ -12,7 +12,7 @@ const movies = require('../data/movies.json');
 
 const lodashSolution = _.chain(movies)
 .filter((num)=> num.rating >= 8)
-.orderBy("rating", "desc")
+.orderBy("rating", "desc") // Feedback: Add title as the secondary ascending sort for movies with the same rating.
 .map((el)=>({
   title: el.title,
   genre: el.genre,
